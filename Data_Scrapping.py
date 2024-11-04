@@ -20,10 +20,20 @@ for script in soup.find_all("script"):
 
 datas = datas[0].split("var")[1].split("= JSON.parse('")[1].split("');")[0]
 decoded_data = bytes(datas, "utf-8").decode("unicode_escape")
+decoded_data = json.loads(decoded_data)
 
+dictionary_leagues = {}
 
-print(decoded_data)
+for data in decoded_data:
+    if 'league_id' in data:
+        del data['league_id']
 
+    if data['league'] not in dictionary_leagues:
+        dictionary_leagues[data['league']] = [data]
+    else:
+        dictionary_leagues[data['league']].append(data)
+
+print(dictionary_leagues['La liga'])
 
 '''
 # Analyser et afficher les données des buts par match
