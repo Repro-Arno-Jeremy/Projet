@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import re
+import pandas as pd
 
 # URL de la page que vous voulez scraper
 url = "https://understat.com/"  # Exemple pour la Premier League (EPL)
@@ -20,10 +21,18 @@ for script in soup.find_all("script"):
 
 datas = datas[0].split("var")[1].split("= JSON.parse('")[1].split("');")[0]
 decoded_data = bytes(datas, "utf-8").decode("unicode_escape")
-decoded_data = json.loads(decoded_data)
+#decoded_data = json.loads(decoded_data)
 
 dictionary_leagues = {}
+dict = pd.read_json(decoded_data)
 
+dict = dict.drop('league_id', axis=1)
+dict = dict.set_index(['league', 'year', 'month'])
+
+print(dict.loc['La liga'])
+
+
+'''
 for data in decoded_data:
     if 'league_id' in data:
         del data['league_id']
@@ -34,11 +43,4 @@ for data in decoded_data:
         dictionary_leagues[data['league']].append(data)
 
 print(dictionary_leagues['La liga'])
-
-'''
-# Analyser et afficher les données des buts par match
-for player in data:
-    player_name = player['player_name']
-    avg_goals = player.get('goals') / player.get('games', 1) if player.get('games') else 0
-    print(f"{player_name}: {avg_goals:.2f} buts par match")
 '''
