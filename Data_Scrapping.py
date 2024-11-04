@@ -8,22 +8,21 @@ url = "https://understat.com/"  # Exemple pour la Premier League (EPL)
 
 # Récupérer le contenu de la page
 response = requests.get(url)
-soup = BeautifulSoup(response.content, "html.parser")
+soup = BeautifulSoup(response.text, "html.parser")
 
-print(soup)
+# Recherche des balises script contenant "statData"
+datas = []
+for script in soup.find_all("script"):
+    if script.string and "statData" in script.string:
+        datas.append(script.string)
 
-# Trouver le script contenant les données JSON
-scripts = soup.find_all("script")
-for script in scripts:
-    if "playersData" in script.text:
-        # Extraire les données JSON en utilisant une expression régulière
-        json_text = re.search(r"var playersData = (\[.*?\]);", script.string)
-        if json_text:
-            data = json.loads(json_text.group(1))
-            break
+print(datas)
 
+
+'''
 # Analyser et afficher les données des buts par match
 for player in data:
     player_name = player['player_name']
     avg_goals = player.get('goals') / player.get('games', 1) if player.get('games') else 0
     print(f"{player_name}: {avg_goals:.2f} buts par match")
+'''
