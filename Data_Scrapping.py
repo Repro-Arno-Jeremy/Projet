@@ -16,7 +16,13 @@ for script in soup.find_all("script"):
     if script.string and "statData" in script.string:
         datas.append(script.string)
 
-print(datas)
+#print(datas)
+
+datas = datas[0].split("var")[1].split("= JSON.parse('")[1].split("');")[0]
+decoded_data = bytes(datas, "utf-8").decode("unicode_escape")
+
+
+print(decoded_data)
 
 
 '''
