@@ -1,40 +1,40 @@
 import requests
 from bs4 import BeautifulSoup
-import json
-import re
+from io import StringIO
 import pandas as pd
 
-def scrapping() :
+def scrapping(league = "La_liga", year="2024") :
 
     # URL de la page que vous voulez scraper
-    url = "https://understat.com/"  # Exemple pour la Premier League (EPL)
+    url = f"https://understat.com/league/{league}/{year}"  # Exemple pour la Premier League (EPL)
 
     # Récupérer le contenu de la page
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
-
     # Recherche des balises script contenant "statData"
-    datas = []
+    datas = [] # Liste pour stocker les données, potentiellement plusieurs donc tableau
     for script in soup.find_all("script"):
-        if script.string and "statData" in script.string:
+        if script.string and "datesData" in script.string:
             datas.append(script.string)
 
-    #print(datas)
+    data = datas[0]
+    decoded_data = bytes(data, "utf-8").decode("unicode_escape")
+    begin = decoded_data.find("'") + 1
+    end = decoded_data.rfind("'")
+    data_json = decoded_data[begin:end]
+    return data_json
 
-    datas = datas[0].split("var")[1].split("= JSON.parse('")[1].split("');")[0]
-    decoded_data = bytes(datas, "utf-8").decode("unicode_escape")
-    #decoded_data = json.loads(decoded_data)
-    return decoded_data
+def data_sorted(league):
+    dict_league = pd.DataFrame()
+    for i in range(2014, 2024):
+        decoded_data = scrapping(league, str(i))
+        dataframe = pd.read_json(StringIO(decoded_data)).drop('datetime', axis = 1)
+        dataframe = dataframe.assign(year = i)
+        dict_league = pd.concat([dict_league, dataframe])
+    return dict_league
 
-def data_sorted(decoded_data, league) :
-    dict = pd.read_json(decoded_data)
+data_sorted_result = data_sorted('La_liga')
 
-    dict = dict.drop('league_id', axis=1)
-    dict = dict.set_index(['league', 'year', 'month'])
-    return dict.loc[league]
-
-decoded_data = scrapping()
-data_sorted_result = data_sorted(decoded_data, 'La liga')
 
 if data_sorted_result is not None:
     csv_file_path = "la_liga_data.csv" 
