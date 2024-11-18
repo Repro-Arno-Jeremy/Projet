@@ -4,7 +4,6 @@ from io import StringIO
 import pandas as pd
 
 def scrapping(league = "La_liga", year="2024") :
-
     # URL de la page que vous voulez scraper
     url = f"https://understat.com/league/{league}/{year}"  # Exemple pour la Premier League (EPL)
 
