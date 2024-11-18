@@ -33,13 +33,19 @@ def data_sorted(league):
         dict_league = pd.concat([dict_league, dataframe])
     return dict_league
 
-leagues = ['La_liga', 'EPL', 'Bundesliga', 'Serie_A', 'Ligue_1', 'RFPL']
+leagues = ['La_liga', 'EPL', 'Bundesliga', 'Serie_A', 'RFPL']
 
 for league in leagues:
     data_sorted_result = data_sorted(league)
-
-
     if data_sorted_result is not None:
         csv_file_path = os.path.join('data_leagues', league + ".csv") 
         data_sorted_result.to_csv(csv_file_path)
         print(f"Data successfully exported to {csv_file_path}")
+
+# Ligue 1
+data_sorted_result = data_sorted('Ligue_1')
+data_sorted_result = data_sorted_result.dropna()
+if data_sorted_result is not None:
+    csv_file_path = os.path.join('data_leagues', 'Ligue_1' + ".csv") 
+    data_sorted_result.to_csv(csv_file_path)
+    print(f"Data successfully exported to {csv_file_path}")
