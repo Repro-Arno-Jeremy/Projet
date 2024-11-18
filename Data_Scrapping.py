@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from io import StringIO
 import pandas as pd
+import os
 
 def scrapping(league = "La_liga", year="2024") :
     # URL de la page que vous voulez scraper
@@ -39,6 +40,6 @@ for league in leagues:
 
 
     if data_sorted_result is not None:
-        csv_file_path = league + ".csv" 
+        csv_file_path = os.path.join('data_leagues', league + ".csv") 
         data_sorted_result.to_csv(csv_file_path)
         print(f"Data successfully exported to {csv_file_path}")

@@ -1,10 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
 # Charger les données
 
 def create_graph(league):
-    data = pd.read_csv(league + '.csv')
+    data = pd.read_csv(os.path.join('data_leagues', league + '.csv'))
 
     # Extraire les probabilités de forecast
     data['forecast_home'] = data['forecast'].apply(lambda x: eval(x))
