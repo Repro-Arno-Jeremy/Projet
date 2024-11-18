@@ -40,4 +40,7 @@ def create_graph(league):
     plt.legend(fontsize=10)
     plt.show()
 
-create_graph('la_liga_data')
+
+leagues = ['La_liga', 'EPL', 'Bundesliga', 'Serie_A', 'Ligue_1', 'RFPL']
+
+create_graph(leagues[1])

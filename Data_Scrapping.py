@@ -32,10 +32,13 @@ def data_sorted(league):
         dict_league = pd.concat([dict_league, dataframe])
     return dict_league
 
-data_sorted_result = data_sorted('La_liga')
+leagues = ['La_liga', 'EPL', 'Bundesliga', 'Serie_A', 'Ligue_1', 'RFPL']
+
+for league in leagues:
+    data_sorted_result = data_sorted(league)
 
 
-if data_sorted_result is not None:
-    csv_file_path = "la_liga_data.csv" 
-    data_sorted_result.to_csv(csv_file_path)
-    print(f"Data successfully exported to {csv_file_path}")
+    if data_sorted_result is not None:
+        csv_file_path = league + ".csv" 
+        data_sorted_result.to_csv(csv_file_path)
+        print(f"Data successfully exported to {csv_file_path}")
