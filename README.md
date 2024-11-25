@@ -9,7 +9,7 @@ The goal of this project is to reproduce experiments this article https://blog.m
 ### How to Reproduce the Results
 1. **Requirements**  
    For this project, we have used : 
-    - Python 3.0.12
+    - Python 3.12.4
     - pandas
     - matplotlib
     - BeautifulSoup / requests
