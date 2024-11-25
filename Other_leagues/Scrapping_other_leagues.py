@@ -31,6 +31,9 @@ leagues = ['T1','G1', 'N1', 'B1', 'P1']
 
 # G1 Pas tout à fait correct dans les données sauvegardées, peut manquer résultats -> matchs annulés ?
 
+if not os.path.exists('other_data_leagues'):
+    os.makedirs('other_data_leagues')
+
 for league in leagues:
     data_sorted_result = data_sorted(league)
     if data_sorted_result is not None:

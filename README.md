@@ -13,25 +13,28 @@ The goal of this project is to reproduce experiments this article https://blog.m
     - pandas
     - matplotlib
     - BeautifulSoup / requests
+    - numpy
+    - scipy
 
 The data have been scrapped on https://understat.com/. BeautifulSoup and requests were used to scrap data. pandas and matplotlib were used to reorganise data and print it using graphs.
 
-2. **Setting Up the Environment**  
-    ARNO
+2. **Setting Up the Environment && Reproducing Results**  
+   - Both Dockerfiles are setting up the environment and also reproducing results
    - Provide instructions for using the Dockerfile to create a reproducible environment:  
      ```bash
      docker build -t reproducible-project .
-     docker run -it reproducible-project
+     docker run -v ./output:/app/output reproducible-project
+     ```
+  
+   - Instructions for using the second Dockerfile with other study:
+     - The terminal must be in Other_leagues
+     ```bash
+     docker build -t reproducible-other-study .
+     docker run -v ./output:/app/output reproducible-other-study
      ```
 
-3. **Reproducing Results**  
-    ARNO
-   - Describe how to run the automated scripts or notebooks to reproduce data and analyze results:
-     ```bash
-     bash scripts/run_analysis.sh
-     ```
-   - Mention Jupyter notebooks (if applicable):  
-     Open `notebooks/reproduce_results.ipynb` to execute the analysis step-by-step.
+   - Results of both studies can then be seen in the html file of their output folder (`analysis_results.html`), 
+     Opening it will show all code and output produced by the original notebook
 
 4. **Automation (Bonus)**  
    - Explain the included GitHub Action that produces or analyzes data automatically.  
