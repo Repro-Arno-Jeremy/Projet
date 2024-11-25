@@ -35,6 +35,9 @@ def data_sorted(league):
 
 leagues = ['La_liga', 'EPL', 'Bundesliga', 'Serie_A', 'RFPL']
 
+if not os.path.exists('data_leagues'):
+    os.makedirs('data_leagues')
+
 for league in leagues:
     data_sorted_result = data_sorted(league)
     if data_sorted_result is not None:
