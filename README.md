@@ -103,16 +103,19 @@ Opening it will show all code and output produced by the original notebook
   In these three leagues, home advantage dropped a lot and sarted to re-augmented after the pandemic. But, home advantage is less band than before.
 
   From data of the original study, we observe that Covid impacted home advantage and back to normal.
-
+ 
 
 ### Does It Confirm the Original Study?
 
-Other leagues confirm that home advantage was less important during covid pandemic but results at home are still re-growing.
+Other leagues confirm that home advantage was less important during covid pandemic but results at home are still re-growing execept for T1 where home advantage is almost constant.
 It seems to be back to the period before pandemic except for one or two seasons close to pandemic.
 
 There are some differences in datasets. Then we weren't able to replicate xPoints and xG on other leagues, so we have less information. 
 
 ## Conclusion
+
+The main result is that Covid pandemic has impacted the 2019 season and often one or two seasons after. Today, it tends to come back to the normal where home advantage is important. Serie A and T1 are differents. Variations in Serie A were already significative before the pandemic. For the turkish league, home advantage is almost constant even during the covid pandemic. 
+
 The original study was reproduced except for columns that contains mistakes and values of Mann–Whitney U test because of the update of scipy library. Our values are two times from the original study, we decided to keep them like that.
 
 The replication section helped us to confirm that covid impacted home advantage in Football and that is coming back to normal. Event without the same data, we achieve to have graphs close to the original study with a different dataset.
