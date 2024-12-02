@@ -61,10 +61,10 @@ The only failure of the study was the values of p-value in Mann–Whitney U test
   Example table:
   | Variability Factor | Possible Values                                                   | Relevance                                   |
   |--------------------|-------------------------------------------------------------------|---------------------------------------------|
-  | Others leagues     | [Turkey, Portugal, Greece, Netherlands, Belgium...]               | Covid may not impact these leagues          |
+  | Other leagues     | [Turkey, Portugal, Greece, Netherlands, Belgium...]               | Covid may not impact these leagues          |
   | Scipy Version      | Under 1.7 or above                                                | p-value of tests may bedivided by two       |
   | Dataset Version    | After 2020                                                        | Ensures comparability across years          |
-  | Others sports      | [Basketball, Baseball, Rugby...]                                  | Home advantage may not be impacted          |   
+  | Other sports      | [Basketball, Baseball, Rugby...]                                  | Home advantage may not be impacted          |   
 
 - **Constraints Across Factors**:  
   - Document any constraints or interdependencies among variability factors.  
@@ -86,14 +86,36 @@ The only failure of the study was the values of p-value in Mann–Whitney U test
 - Results of both studies (reproducibility and replicability) can then be seen in the html file of their output folder (`analysis_results.html`), 
 Opening it will show all code and output produced by the original notebook
 
-2. **Presentation and Analysis of Results**  
-   - Include results in text, tables, or figures.
-   - Analyze and compare with the original study's findings.
+2. **Presentation and Analysis of Results** 
+  We did the same analysis for years after 2020 to compare with the original study. We also added 5 other leagues to compare the impact of pandemic on home advantage in Football. There is the same impact on other leagues during the pandemic on home advantage.
+
+  Example table of results : 
+  | League | Year | Diff_Points |
+  | T1 | 2019 | 132 |
+  | T1 | 2020 | 132 |
+  | T1 | 2021 | 207 |
+  | B1 | 2019 | 129 |
+  | B1 | 2020 | 30 |
+  | B1 | 2021 | 54 |
+  | G1 | 2019 | 132 |
+  | G1 | 2020 | 36 |
+  | G1 | 2021 | 72 |
+
+  In these three leagues, home advantage dropped a lot and sarted to re-augmented after the pandemic. But, home advantage is less band than before.
+
+  From data of the original study, we observe that Covid impacted home advantage and back to normal.
+
 
 ### Does It Confirm the Original Study?
-- Summarize the extent to which the replication supports the original study’s conclusions.
-- Highlight similarities and differences, if any.
+
+Other leagues confirm that home advantage was less important during covid pandemic but results at home are still re-growing.
+It seems to be back to the period before pandemic except for one or two seasons close to pandemic.
+
+There are some differences in datasets. Then we weren't able to replicate xPoints and xG on other leagues, so we have less information. 
 
 ## Conclusion
-- Recap findings from the reproducibility and replicability sections.
-- Discuss limitations of your
+The original study was reproduced except for columns that contains mistakes and values of Mann–Whitney U test because of the update of scipy library. Our values are two times from the original study, we decided to keep them like that.
+
+The replication section helped us to confirm that covid impacted home advantage in Football and that is coming back to normal. Event without the same data, we achieve to have graphs close to the original study with a different dataset.
+
+The limitations are that we have to trust the validity of datasets, we are limited by metrics of datasets and the conformity of libraries that we're using.
