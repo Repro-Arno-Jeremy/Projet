@@ -23,11 +23,9 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.REPTOKEN }}
 
-      - name: cd into the repository
-        run: |
-          cd $GITHUB_WORKSPACE/Other_leagues
       - name: Build Docker image
         run: |
+          cd $GITHUB_WORKSPACE/Other_leagues
           docker build -t scrap_other_leagues .
 
       - name: Create output folder
@@ -41,10 +39,6 @@ jobs:
       - name: Run Docker container and save output
         run: |
           docker run -v ./output:/app/output scrap_other_leagues
-
-      - name: cd into the repository
-        run: |
-          cd ..
 
       - name: Build Docker image
         run: |
