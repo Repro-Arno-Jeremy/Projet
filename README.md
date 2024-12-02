@@ -67,13 +67,10 @@ The only failure of the study was the values of p-value in Mann–Whitney U test
   | Other sports      | [Basketball, Baseball, Rugby...]                                  | Home advantage may not be impacted          |   
 
 - **Constraints Across Factors**:  
-  - Document any constraints or interdependencies among variability factors.  
-    For example: 
-    - Random Seed must align with dataset splits for consistent results.
-    - Hardware constraints may limit the choice of GPU-based factors.
+  We have to make the study using datasets that are available. The scipy version should be the same between datasets in order to be consistent.
 
 - **Exploring Variability Factors via CLI (Bonus)**  *
-    We already compute all the graphs for 5 additionals leagues without any CLI. We also provide data for the seasons after 2020 for the original study.
+  We already compute all the graphs for 5 additionals leagues without any CLI. We also provide data for the seasons after 2020 for the original study.
 
 ### Replication Execution
 1. **Instructions**  
@@ -91,15 +88,17 @@ Opening it will show all code and output produced by the original notebook
 
   Example table of results : 
   | League | Year | Diff_Points |
-  | T1 | 2019 | 132 |
-  | T1 | 2020 | 132 |
-  | T1 | 2021 | 207 |
-  | B1 | 2019 | 129 |
-  | B1 | 2020 | 30 |
-  | B1 | 2021 | 54 |
-  | G1 | 2019 | 132 |
-  | G1 | 2020 | 36 |
-  | G1 | 2021 | 72 |
+  |--------|------|-------------|
+  | T1     | 2019 | 132         |
+  | T1     | 2020 | 132         |
+  | T1     | 2021 | 207         |
+  | B1     | 2019 | 129         |
+  | B1     | 2020 | 30          |
+  | B1     | 2021 | 54          |
+  | G1     | 2019 | 132         |
+  | G1     | 2020 | 36          |
+  | G1     | 2021 | 72          |
+
 
   In these three leagues, home advantage dropped a lot and sarted to re-augmented after the pandemic. But, home advantage is less band than before.
 
