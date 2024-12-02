@@ -17,4 +17,4 @@ VOLUME /app/output
 # Commande par défaut à exécuter
 CMD ["bash", "-c", "\
     python Scrapping_other_leagues.py && \
-    jupyter nbconvert --to html --execute analysis_other_leagues.ipynb --output ./output/analysis_results.html"]
+    jupyter nbconvert --to html --execute analysis_other_leagues.ipynb --output ./output/analysis_other_leagues_results.html"]

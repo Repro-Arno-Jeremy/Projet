@@ -5,7 +5,7 @@ on:
       - '**'
     paths-ignore:  # Ignore la CI si la seule modif provient de results.csv si elles viennent de l'action
       - 'output/analysis_results.html'
-      - 'Other_leagues/output/analysis_results.html'
+      - 'output/analysis_other_leagues_results.html'
 
 jobs:
   build:
@@ -44,14 +44,6 @@ jobs:
         run: |
           docker build -t my-scraper-notebook .
 
-      - name: Create output folder
-        run: |
-          mkdir -p output/
-
-      - name: Adjust output folder permissions
-        run: |
-          chmod 777 output
-
       - name: Run Docker container and save output
         run: |
           docker run -v ./output:/app/output my-scraper-notebook
@@ -62,7 +54,7 @@ jobs:
           git config --local user.email ${{ secrets.EMAIL }}
           git config --local user.name "arnolec"
           git add $(pwd)/output/analysis_results.html
-          git add $(pwd)/Other_leagues/output/analysis_results.html
+          git add $(pwd)/output/analysis_other_leagues_results.html
           git commit -m "Update results with Docker output [skip-ci]"
 
       - name: Push changes to the variation branch
