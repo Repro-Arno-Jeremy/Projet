@@ -29,8 +29,12 @@ The data have been scrapped on https://understat.com/. BeautifulSoup and request
    - Results of both studies (reproducibility and replicability) can then be seen in the html file of their output folder (`analysis_results.html`), 
      Opening it will show all code and output produced by the original notebook
 
-4. **Automation (Bonus)**  
-   - Explain the included GitHub Action that produces or analyzes data automatically.  
+3. **Automation (Bonus)**  
+   - The github action executes two dockerfiles
+    - The first one executes a notebook to reproduce initial research and generate a result into hmtl
+    - The second one executes a notebook to replicate initial research with other datasets and generate a result into hmtl
+    - Then both files are added and committed by the CI
+
     
 ### Encountered Issues and Improvements
 
