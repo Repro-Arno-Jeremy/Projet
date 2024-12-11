@@ -34,7 +34,6 @@ The data have been scrapped on https://understat.com/. BeautifulSoup and request
     - The first one executes a notebook to reproduce initial research and generate a result into hmtl
     - The second one executes a notebook to replicate initial research with other datasets and generate a result into hmtl
     - Then both files are added and committed by the CI
-
     
 ### Encountered Issues and Improvements
 
